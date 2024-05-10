@@ -19,6 +19,7 @@ let url = $request.url;
 if (url.indexOf("https://api2019.jiheapp.com/v1/user/info/get") !== -1) {
     let data = JSON.parse(body);
     data.data.status = "3";
+    data.data.expired_time="2024-05-09 17:38:33"
     body = JSON.stringify(data);
 }
 $done({ body: body });
