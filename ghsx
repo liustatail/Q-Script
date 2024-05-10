@@ -1,0 +1,24 @@
+
+/*
+
+光华商学
+付费及会员专享课程 
+
+[rewrite_local]
+
+^https:\/\/api2019\.jiheapp\.com\/v1\/(user\/info\/get|user\/course\/(check_material|section_list|detail)) url script-response-body https://raw.githubusercontent.com/Yu9191/Rewrite/main/ghsx.js
+
+[mitm]
+hostname = api2019.jiheapp.com
+*/
+
+
+let body = $response.body;
+let url = $request.url;
+
+if (url.indexOf("https://api2019.jiheapp.com/v1/user/info/get") !== -1) {
+    let data = JSON.parse(body);
+    data.data.status = "3";
+    body = JSON.stringify(data);
+}
+$done({ body: body });
